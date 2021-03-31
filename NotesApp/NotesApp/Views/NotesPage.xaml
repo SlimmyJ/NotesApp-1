@@ -4,20 +4,7 @@
              x:Class="NotesApp.Views.NotesPage">
     <ContentPage.Content>
         <StackLayout>
-            <!--Multi-line textbox-->
-            <Editor x:Name="editor"
-                    Placeholder="Please enter a note"
-                    HeightRequest="100" />
-
-            <!--Short hand for a 2 column grid-->
-            <Grid ColumnDefinitions="*,*" >
-                <Button Text="Save"
-                        Clicked="OnSaveButtonClicked" />
-
-                <Button Text="Delete"
-                        Grid.Column="1"
-                        Clicked="OnDeleteButtonClicked" />
-            </Grid>
+            
 
             <!--<Grid>
                 <Grid.ColumnDefinitions>
