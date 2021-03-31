@@ -8,6 +8,12 @@
                             Margin="20"
                             SelectionMode="Single"
                             SelectionChangedCommand="OnSelectionChanged">
+
+                <CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical" 
+                                       ItemSpacing="20" />
+                </CollectionView.ItemsLayout>
+                
                 <!--Provide styling for every element in a databound collection-->
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
