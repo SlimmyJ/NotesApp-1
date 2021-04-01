@@ -13,6 +13,7 @@ namespace NotesApp
 
             // App shell contains all navigation routes in app.
             Routing.RegisterRoute(nameof(NoteEntryPage), typeof(NoteEntryPage));
+            Routing.RegisterRoute(nameof(ToDoEntryPage), typeof(ToDoEntryPage));
         }
 
     }

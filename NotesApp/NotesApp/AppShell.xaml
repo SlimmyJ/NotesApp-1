@@ -1,8 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Shell xmlns="http://xamarin.com/schemas/2014/forms" 
-       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-       
-       xmlns:myNamespace="clr-namespace:NotesApp.Views"
+       xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+       xmlns:MyNameSpace="clr-namespace:NotesApp.Views"
        Title="NotesApp"
        x:Class="NotesApp.AppShell">
 
@@ -34,11 +33,18 @@
     <TabBar>
         <ShellContent Title="Notes"
                       Icon="icon_feed.png"
-                      ContentTemplate="{DataTemplate myNamespace:NotesPage}" /> <!-- Store namespace in a variable -->
+                      ContentTemplate="{DataTemplate MyNameSpace:NotesPage}" /> <!-- Store namespace in a variable -->
+
+        <ShellContent Title="ToDos"
+                    
+                      ContentTemplate="{DataTemplate MyNameSpace:ToDoPage}" />
+
 
         <ShellContent Title="About"
                       Icon="icon_about.png"
-                      ContentTemplate="{DataTemplate myNamespace:AboutPage}" />
+                      ContentTemplate="{DataTemplate MyNameSpace:AboutPage}" />
+        
+        
     </TabBar>
 
     <!--
