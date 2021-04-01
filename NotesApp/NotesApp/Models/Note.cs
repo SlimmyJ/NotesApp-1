@@ -10,5 +10,10 @@ namespace NotesApp.Models
         public string FileName { get; set; }
         public string Text { get; set; }
         public DateTime Date { get; set; }
+
+        public virtual void ICanBeOverridden()
+        {
+
+        }
     }
 }

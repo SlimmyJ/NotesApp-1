@@ -4,30 +4,31 @@
              x:Class="NotesApp.Views.NotesPage">
     <ContentPage.Content>
         <StackLayout>
-            <CollectionView x:Name="MyNotes"
+            <!--CollectionView needs a name so we can address it in the code-behind-->
+            <CollectionView x:Name="myNotes"
                             Margin="20"
-                            SelectionMode="Single"
-                            SelectionChangedCommand="OnSelectionChanged">
+                            SelectionMode ="Single"
+                            SelectionChanged="myNotes_SelectionChanged">
 
-                <CollectionView.ItemsLayout>
-                    <LinearItemsLayout Orientation="Vertical" 
-                                       ItemSpacing="20" />
-                </CollectionView.ItemsLayout>
+                <!--<CollectionView.ItemsLayout>
+                    <LinearItemsLayout Orientation="Vertical"
+                                       ItemSpacing="10"/> 
+                </CollectionView.ItemsLayout>-->
                 
-                <!--Provide styling for every element in a databound collection-->
                 <CollectionView.ItemTemplate>
+                    <!--Generate markup X amount of times for each element in collectionview.itemssource-->
                     <DataTemplate>
                         <StackLayout>
                             <Label Text="{Binding Text}"
                                    FontSize="Medium" />
-
+                            
                             <Label Text="{Binding Date}"
                                    FontSize="Small"
-                                   TextColor="Silver" />
+                                   TextColor="Silver"/>
                         </StackLayout>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </StackLayout>
+            </StackLayout>
     </ContentPage.Content>
 </ContentPage>
