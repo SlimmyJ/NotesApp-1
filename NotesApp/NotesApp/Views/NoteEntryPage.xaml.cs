@@ -37,7 +37,7 @@ namespace NotesApp.Views
                 if (string.IsNullOrWhiteSpace(note.FileName))
                 {
                     // Access a file in an app's sandbox
-                    string _fileName = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData), "notes.txt");
+                    string _fileName = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.notes.txt");
                     File.WriteAllText(_fileName, editor.Text);
                 }
                 else

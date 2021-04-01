@@ -44,5 +44,12 @@ namespace NotesApp.Views
         {
             throw new NotImplementedException();
         }
+
+        private async void AddNoteClicked(object sender, EventArgs e)
+        {
+            // nameof -> Returns name of object in string format
+            // Much, much safer than using "NoteEntryPage" -> A danger to refactoring
+            await Shell.Current.GoToAsync(nameof(NoteEntryPage));
+        }
     }
 }
