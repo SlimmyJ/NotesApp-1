@@ -6,9 +6,18 @@ using Xamarin.Forms.Xaml;
 
 namespace NotesApp.Views
 {
-    [XamlCompilation(XamlCompilationOptions.Compile)]
+    [QueryProperty(nameof(ItemId), nameof(ItemId))]
     public partial class NoteEntryPage : ContentPage
     {
+        public string ItemId
+        {
+            set
+            {
+                LoadNote(value);
+            }
+        }
+
+
         public NoteEntryPage()
         {
             InitializeComponent();

@@ -2,7 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.IO;
-
+using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -40,9 +40,11 @@ namespace NotesApp.Views
             myNotes.ItemsSource = notes;
         }
 
-        private void myNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private async void myNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            throw new NotImplementedException();
+            // Get the first selected element from a collectionview
+            Note note = (Note)e.CurrentSelection.FirstOrDefault();
+            await Shell.Current.GoToAsync($"{nameof(NoteEntryPage)}?{nameof(NoteEntryPage.ItemId)}={note.FileName}");
         }
 
         private async void AddNoteClicked(object sender, EventArgs e)
