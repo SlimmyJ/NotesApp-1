@@ -1,4 +1,5 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotesApp.Views.AboutPage">
@@ -10,7 +11,6 @@
                    VerticalOptions="Center"
                    HeightRequest="64"
                    BackgroundColor="{OnPlatform Android=LightGray, UWP=LightBlue}" />
-            
             <!--Layout children vertically-->
             <StackLayout Grid.Row="1"
                          Margin="20"
@@ -21,14 +21,13 @@
                             <FormattedString.Spans>
                                 <Span Text="Notes"
                                       FontAttributes="Bold"
-                                      FontSize="22"/>
-                                <Span Text="v1.0"/>
+                                      FontSize="22" />
+                                <Span Text="v1.0" />
                             </FormattedString.Spans>
                         </FormattedString>
                     </Label.FormattedText>
                 </Label>
-
-                <Label Text="This app was written with Xamarin Forms 5.0"/>
+                <Label Text="This app was written with Xamarin Forms 5.0" />
                 <Button Text="Learn more"
                         Clicked="OnButtonLearnMoreClicked" />
             </StackLayout>

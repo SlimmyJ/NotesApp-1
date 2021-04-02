@@ -1,12 +1,12 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
+﻿<?xml version="1.0" encoding="utf-8"?>
+
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="NotesApp.Views.ToDoPage">
     <ContentPage.ToolbarItems>
         <ToolbarItem Text="Add ToDo"
-                     Clicked="AddToDoClicked"/>
+                     Clicked="AddToDoClicked" />
     </ContentPage.ToolbarItems>
-    
     <ContentPage.Content>
         <StackLayout>
             <CollectionView x:Name="myToDos"
@@ -16,14 +16,13 @@
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <StackLayout Orientation="Horizontal">
-                            <CheckBox IsChecked="True"/>
+                            <CheckBox IsChecked="True" />
                             <StackLayout>
-                                <Label Text="{Binding Text}"/>
-                                <Label Text="{Binding DateOfCreation}"/>
-                                <Label Text="{Binding Deadline}"/>
+                                <Label Text="{Binding Text}" />
+                                <Label Text="{Binding DateOfCreation}" />
+                                <Label Text="{Binding Deadline}" />
                             </StackLayout>
                         </StackLayout>
-                        
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>

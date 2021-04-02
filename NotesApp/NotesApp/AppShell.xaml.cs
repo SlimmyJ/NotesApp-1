@@ -1,11 +1,9 @@
 ﻿using NotesApp.Views;
-using System;
-using System.Collections.Generic;
 using Xamarin.Forms;
 
 namespace NotesApp
 {
-    public partial class AppShell : Xamarin.Forms.Shell
+    public partial class AppShell : Shell
     {
         public AppShell()
         {
@@ -15,6 +13,5 @@ namespace NotesApp
             Routing.RegisterRoute(nameof(NoteEntryPage), typeof(NoteEntryPage));
             Routing.RegisterRoute(nameof(ToDoEntryPage), typeof(ToDoEntryPage));
         }
-
     }
 }

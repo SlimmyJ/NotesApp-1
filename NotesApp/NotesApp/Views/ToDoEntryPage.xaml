@@ -1,26 +1,24 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             x:Class="NotesApp.Views.ToDoEntryPage">
+﻿<?xml version="1.0" encoding="utf-8"?>
+
+<ContentPage x:Class="NotesApp.Views.ToDoEntryPage"
+             xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
     <ContentPage.Content>
         <StackLayout Margin="20">
-            <CheckBox IsChecked="True"/>
-            <DatePicker/>
-            
-            <!--Multi-line textbox-->
+            <CheckBox IsChecked="True" />
+            <DatePicker />
+            <!--  Multi-line textbox  -->
             <Editor x:Name="title"
+                    HeightRequest="100"
                     Placeholder="Please enter a ToDo"
-                    Text="{Binding Text}"
-                    HeightRequest="100" />
-
-            <!--Short hand for a 2 column grid-->
-            <Grid ColumnDefinitions="*,*" >
-                <Button Text="Save"
-                        Clicked="OnSaveButtonClicked" />
-
-                <Button Text="Delete"
-                        Grid.Column="1"
-                        Clicked="OnDeleteButtonClicked" />
+                    Text="{Binding Text}" />
+            <!--  Short hand for a 2 column grid  -->
+            <Grid ColumnDefinitions="*,*">
+                <Button Clicked="OnSaveButtonClicked"
+                        Text="Save" />
+                <Button Grid.Column="1"
+                        Clicked="OnDeleteButtonClicked"
+                        Text="Delete" />
             </Grid>
         </StackLayout>
     </ContentPage.Content>
