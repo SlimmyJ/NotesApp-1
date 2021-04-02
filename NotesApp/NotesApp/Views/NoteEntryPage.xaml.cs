@@ -2,7 +2,6 @@
 using System;
 using System.IO;
 using Xamarin.Forms;
-using Xamarin.Forms.Xaml;
 
 namespace NotesApp.Views
 {
@@ -16,7 +15,6 @@ namespace NotesApp.Views
                 LoadNote(value);
             }
         }
-
 
         public NoteEntryPage()
         {
@@ -39,25 +37,49 @@ namespace NotesApp.Views
         private async void OnSaveButtonClicked(object sender, EventArgs e)
         {
             var note = BindingContext as Note;
+            note.Date = DateTime.Now;
 
             if (note != null)
             {
-                // Check if file already exists
-                if (string.IsNullOrWhiteSpace(note.FileName))
-                {
-                    // Access a file in an app's sandbox
-                    string _fileName = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.notes.txt");
-                    File.WriteAllText(_fileName, editor.Text);
-                }
-                else
-                {
-                    // Update existing file
-                    File.WriteAllText(note.FileName, editor.Text);
-                }
+                SaveNote(note);
+
+
+                //// Check if file already exists
+                //if (string.IsNullOrWhiteSpace(note.FileName))
+                //{
+                //    // Access a file in an app's sandbox
+                //    string _fileName = Path.Combine(App.FolderPath, $"{Path.GetRandomFileName()}.notes.txt");
+                //    File.WriteAllText(_fileName, editor.Text);
+                //}
+                //else
+                //{
+                //    // Update existing file
+                //    File.WriteAllText(note.FileName, editor.Text);
+                //}
             }
 
             // Navigate backwards -> Go back to previous screen
             await Shell.Current.GoToAsync("..");
+        }
+
+        public void SaveNote(Note note)
+        {
+            using (var dbContext = new NotesContext())
+            {
+                // Check if item is new or an existing note has to be updated
+                if (note.Id == 0)
+                {
+                    // Item is new. Add new item
+                    dbContext.Notes.Add(note);
+                }
+                else
+                {
+                    // Update existing note
+                    dbContext.Notes.Update(note);
+                }
+
+                dbContext.SaveChanges();
+            }
         }
 
         private async void OnDeleteButtonClicked(object sender, EventArgs e)

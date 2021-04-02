@@ -20,24 +20,37 @@ namespace NotesApp.Views
         protected override void OnAppearing()
         {
             base.OnAppearing();
+            var notes = GetAllNotes();
 
-            var notes = new List<Note>();
 
-            // Create a Note object from each file
-            var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
 
-            foreach (var file in files)
-            {
-                notes.Add(new Note
-                {
-                    FileName = file,
-                    Text = File.ReadAllText(file),
-                    Date = File.GetCreationTime(file),
-                });
-            }
+            //// Create a Note object from each file
+            //var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
+
+            //foreach (var file in files)
+            //{
+            //    notes.Add(new Note
+            //    {
+            //        FileName = file,
+            //        Text = File.ReadAllText(file),
+            //        Date = File.GetCreationTime(file),
+            //    });
+            //}
 
             // Bind a list of items to a collectionView
             myNotes.ItemsSource = notes;
+        }
+
+        private IEnumerable<Note> GetAllNotes()
+        {
+            List<Note> notes = new List<Note>();
+
+            using(var dbContext = new NotesContext())
+            {
+                notes = dbContext.Notes.ToList();
+            }
+
+            return notes;
         }
 
         private async void myNotes_SelectionChanged(object sender, SelectionChangedEventArgs e)

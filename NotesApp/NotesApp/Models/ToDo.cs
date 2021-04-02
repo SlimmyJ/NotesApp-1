@@ -4,7 +4,7 @@ using System.Text;
 
 namespace NotesApp.Models
 {
-    class ToDo
+    public class ToDo
     {
         public int Id { get; set; }
 
@@ -20,13 +20,5 @@ namespace NotesApp.Models
 
 
         public int GradeOfImportance { get; set; }
-
-
-        public virtual void ICanBeOverridden()
-        {
-
-        }
-
-
     }
 }
