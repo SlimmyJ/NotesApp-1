@@ -1,7 +1,7 @@
 ﻿using NotesApp.Models;
+using NotesApp.Repositories;
 using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
@@ -11,10 +11,12 @@ namespace NotesApp.Views
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class NotesPage : ContentPage
     {
-       
+        private INoteRepository noteRepository;
+
         public NotesPage()
         {
             InitializeComponent();
+            noteRepository = new NoteRepository();
         }
 
         protected override void OnAppearing()
@@ -22,34 +24,13 @@ namespace NotesApp.Views
             base.OnAppearing();
             var notes = GetAllNotes();
 
-
-
-            //// Create a Note object from each file
-            //var files = Directory.EnumerateFiles(App.FolderPath, "*.notes.txt");
-
-            //foreach (var file in files)
-            //{
-            //    notes.Add(new Note
-            //    {
-            //        FileName = file,
-            //        Text = File.ReadAllText(file),
-            //        Date = File.GetCreationTime(file),
-            //    });
-            //}
-
             // Bind a list of items to a collectionView
             myNotes.ItemsSource = notes;
         }
 
         private IEnumerable<Note> GetAllNotes()
         {
-            List<Note> notes = new List<Note>();
-
-            using(var dbContext = new NotesContext())
-            {
-                notes = dbContext.Notes.ToList();
-            }
-
+            IEnumerable<Note> notes = noteRepository.GetAllNotes();
             return notes;
         }
 
@@ -57,7 +38,7 @@ namespace NotesApp.Views
         {
             // Get the first selected element from a collectionview
             Note note = (Note)e.CurrentSelection.FirstOrDefault();
-            await Shell.Current.GoToAsync($"{nameof(NoteEntryPage)}?{nameof(NoteEntryPage.ItemId)}={note.FileName}");
+            await Shell.Current.GoToAsync($"{nameof(NoteEntryPage)}?{nameof(NoteEntryPage.ItemId)}={note.Id}");
         }
 
         private async void AddNoteClicked(object sender, EventArgs e)
